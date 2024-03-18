@@ -35,7 +35,7 @@ def main():
         'Select AI Model', ['ChatGPT', 'Gemini'])
     st.session_state.api_key = st.sidebar.text_input(label=f'{selected_ai_model} API Key',
                                                      type='password')
-    save_key = st.sidebar.button('Save')
+    save_key = st.sidebar.button('Done')
     if save_key:
         try:
             if not st.session_state.api_key:
