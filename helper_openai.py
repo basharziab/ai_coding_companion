@@ -2,12 +2,11 @@ from openai import OpenAI
 
 
 def openai_text(prompt, entered_api_key):
-    print(f"openai entered_api_key : {entered_api_key}")
     client = OpenAI(api_key=entered_api_key)
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a helpful programmer. You only respond if the prompt is relevent to programming. You communicates using markdown."},
+            {"role": "system", "content": "You are a helpful programmer. You only respond if the prompt is relevent to programming. You only communicate using markdown with proper formatting and headings of each task."},
             {"role": "user", "content": prompt}
         ],
         max_tokens=300,  # the maximum number of tokens to generate in the completion

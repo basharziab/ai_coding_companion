@@ -31,9 +31,9 @@ def main():
 
     # Configuration sidebar
     st.sidebar.header('Configuration')
-    selected_language = st.sidebar.radio(
+    selected_ai_model = st.sidebar.radio(
         'Select AI Model', ['ChatGPT', 'Gemini'])
-    st.session_state.api_key = st.sidebar.text_input(label=f'{selected_language} API Key',
+    st.session_state.api_key = st.sidebar.text_input(label=f'{selected_ai_model} API Key',
                                                      type='password')
     save_key = st.sidebar.button('Save')
     if save_key:
@@ -111,7 +111,7 @@ def main():
             explain_code = st.checkbox("Explain Code")
         with col2:
             global write_code_docs
-            explain_code = st.checkbox("Generate Documentation")
+            write_code_docs = st.checkbox("Generate Docs")
 
         with col1:
             global add_error_handling
@@ -120,8 +120,8 @@ def main():
         send = st.button("Send", use_container_width=True)
         if send:
             if st.session_state.prompt:
-                st.session_state.prompt = f"Perform the following functions.\n \
-                    - {st.session_state.prompt}"
+                st.session_state.prompt = f"Perform the following.\n - Hello \n - {
+                    st.session_state.prompt}"
                 if time_complexity:
                     st.session_state.prompt = st.session_state.prompt + \
                         f"\n - Find time complexity of the generated code."
@@ -149,10 +149,16 @@ def main():
                 if write_code_docs:
                     st.session_state.prompt = st.session_state.prompt + \
                         f"\n - Generate function docs for the generated code."
-                if selected_language == 'ChatGPT':
+
+                # print("Prompt : ")
+                # print(st.session_state.prompt)
+                # print("Selected Language : ")
+                # print(selected_ai_model)
+
+                if selected_ai_model == 'ChatGPT':
                     st.session_state.output_text = openai_text(
                         st.session_state.prompt, st.session_state.api_key)
-                elif selected_language == 'Gemini':
+                elif selected_ai_model == 'Gemini':
                     st.session_state.output_text = gemini_text(
                         st.session_state.prompt, st.session_state.api_key)
                 my_output.markdown(scrollable_text(
