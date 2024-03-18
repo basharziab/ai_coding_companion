@@ -13,7 +13,7 @@ def openai_text(prompt, entered_api_key):
         max_tokens=300,  # the maximum number of tokens to generate in the completion
         temperature=0,  # this is the degree of randomness of the model's output
     )
-    print(f"RESPONSE OPENAI : {response}")
-    print(f"response.choices[0].message.content : {
-          response.choices[0].message.content}")
+    # print(f"RESPONSE OPENAI : {response}")
+    # print(f"response.choices[0].message.content : {
+    #       response.choices[0].message.content}")
     return response.choices[0].message.content

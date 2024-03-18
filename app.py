@@ -35,9 +35,6 @@ def main():
     st.session_state.api_key = st.sidebar.text_input(label=f'{selected_language} API Key',
                                                      type='password')
     save_key = st.sidebar.button('Save')
-    if save_key:
-        print("API Key : "+st.session_state.api_key)
-        # st.session_state.api_key = api_key
 
     # write a session state variable with the name prompt
     st.session_state.prompt = st.text_area(
@@ -136,9 +133,6 @@ def main():
                 if add_error_handling:
                     st.session_state.prompt = st.session_state.prompt + \
                         f"\n - Add error handling for the generated code."
-                print("Prompt : "+st.session_state.prompt)
-                print("API Key : "+st.session_state.api_key)
-                print("Selected Language : "+selected_language)
                 if selected_language == 'ChatGPT':
                     st.session_state.output_text = openai_text(
                         st.session_state.prompt, st.session_state.api_key)
@@ -148,11 +142,6 @@ def main():
                 my_output.markdown(scrollable_text(
                     st.session_state.output_text),
                     unsafe_allow_html=True)
-
-        # # Button to reset the form
-        # with col2:
-        #     reset = st.button("Reset")
-
 
 if __name__ == "__main__":
     main()
