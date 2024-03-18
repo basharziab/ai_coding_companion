@@ -4,7 +4,6 @@ import google.ai.generativelanguage as glm
 
 
 def gemini_text(prompt, entered_api_key):
-    # print(f"gemini entered_api_key : {entered_api_key}")
     genai.configure(api_key=entered_api_key)
     model = genai.GenerativeModel("gemini-pro")
 
