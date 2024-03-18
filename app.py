@@ -89,7 +89,7 @@ def main():
             generate_test_data = st.checkbox("Generate Test Data")
         with col2:
             global integrate_test_cases
-            integrate_test_cases = st.checkbox("Integrate Test Cases")
+            integrate_test_cases = st.checkbox("Generate Test Cases")
 
         # More Actions
         st.subheader("More Actions")
