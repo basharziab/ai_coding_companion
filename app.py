@@ -36,6 +36,15 @@ def main():
     st.session_state.api_key = st.sidebar.text_input(label=f'{selected_language} API Key',
                                                      type='password')
     save_key = st.sidebar.button('Save')
+    if save_key:
+        try:
+            if not st.session_state.api_key:
+                raise ValueError("API key is required")
+
+            # call API using api_key
+
+        except ValueError as err:
+            st.error(err)
 
     # write a session state variable with the name prompt
     st.session_state.prompt = st.text_area(
@@ -149,6 +158,8 @@ def main():
                 my_output.markdown(scrollable_text(
                     st.session_state.output_text),
                     unsafe_allow_html=True)
+            else:
+                st.error("Prompt is required")
 
 
 if __name__ == "__main__":
