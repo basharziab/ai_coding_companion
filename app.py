@@ -149,10 +149,5 @@ def main():
                     st.session_state.output_text),
                     unsafe_allow_html=True)
 
-        # # Button to reset the form
-        # with col2:
-        #     reset = st.button("Reset")
-
-
 if __name__ == "__main__":
     main()
