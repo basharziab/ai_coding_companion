@@ -148,7 +148,7 @@ def main():
                         f"\n - Add error handling for the generated code."
                 if write_code_docs:
                     st.session_state.prompt = st.session_state.prompt + \
-                        f"\n - Generate documentation for the generated code."
+                        f"\n - Generate function docs for the generated code."
                 if selected_language == 'ChatGPT':
                     st.session_state.output_text = openai_text(
                         st.session_state.prompt, st.session_state.api_key)
