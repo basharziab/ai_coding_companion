@@ -10,6 +10,7 @@ integrate_test_cases = False
 perform_code_review = False
 explain_code = False
 add_error_handling = False
+write_code_docs = False
 
 my_output = None
 
@@ -99,6 +100,9 @@ def main():
         with col2:
             global explain_code
             explain_code = st.checkbox("Explain Code")
+        with col2:
+            global write_code_docs
+            explain_code = st.checkbox("Write Code Docs")
 
         with col1:
             global add_error_handling
@@ -133,6 +137,9 @@ def main():
                 if add_error_handling:
                     st.session_state.prompt = st.session_state.prompt + \
                         f"\n - Add error handling for the generated code."
+                if write_code_docs:
+                    st.session_state.prompt = st.session_state.prompt + \
+                        f"\n - Write code documentation for the generated code."
                 if selected_language == 'ChatGPT':
                     st.session_state.output_text = openai_text(
                         st.session_state.prompt, st.session_state.api_key)
@@ -142,6 +149,7 @@ def main():
                 my_output.markdown(scrollable_text(
                     st.session_state.output_text),
                     unsafe_allow_html=True)
+
 
 if __name__ == "__main__":
     main()
