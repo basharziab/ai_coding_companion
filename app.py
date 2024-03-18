@@ -120,8 +120,8 @@ def main():
         send = st.button("Send", use_container_width=True)
         if send:
             if st.session_state.prompt:
-                st.session_state.prompt = f"Perform the following.\n - Hello \n - 
-                {st.session_state.prompt}"
+                st.session_state.prompt = f"Perform the following.\n \
+                - Hello \n - {st.session_state.prompt}"
                 if time_complexity:
                     st.session_state.prompt = st.session_state.prompt + \
                         f"\n - Find time complexity of the generated code."
